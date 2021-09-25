@@ -20,4 +20,103 @@ body {
   background-color: #202020;
   color: #ffffff;
 }
+
+h1 {
+  margin-bottom: 70px;
+}
+
+input {
+  height: 25px;
+  margin-left: 20px;
+}
+
+input:focus {
+  border-color: #0a95ff;
+}
+
+label {
+  font-size: 1rem;
+  margin-left: 40px;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50vh;
+  border: 1px red solid;
+}
+
+#pop-up-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #202020;
+  color: white;
+  border: 1px red solid;
+  width: 1100px;
+  padding: 10px;
+}
+
+#pages {
+  width: 60px;
+}
+
+#submit {
+  background-color: #0a95ff;
+  color: white;
+  border: 1px black solid;
+  border-radius: 3px;
+  margin-left: 40px;
+  height: 30px;
+  width: 100px;
+}
+
+#submit:hover {
+  border: 1px white solid;
+}
+
+#submit:active {
+  background-color: #202020;
+  color: white;
+}
+
+#reset {
+  outline: white;
+  background-color: #0a95ff;
+  color: white;
+  border: 1px black solid;
+  border-radius: 3px;
+  height: 30px;
+  width: 70px;
+}
+
+#reset:hover {
+  border: 1px white solid;
+}
+
+#reset:active {
+  background-color: #202020;
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

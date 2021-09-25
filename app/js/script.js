@@ -1,9 +1,14 @@
 console.log('hello everybody');
 
+let addNewBookBtn = document.getElementById('new-book'); 
+let myLibrary = []; 
+let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '296 pages', 'not read yet'); 
 
+addNewBookBtn.addEventListener('click', () => {
+  console.log('button pressed');
+}); 
 
-
-// object constructor 
+// book constructor
 function Book(title, author, pages, read) {
   this.title = title
   this.author = author
@@ -14,6 +19,6 @@ function Book(title, author, pages, read) {
   }
 }
 
-let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '296 pages', 'not read yet'); 
-
-console.log(theHobbit.info()); 
+function addBookToLibrary() {
+  // do stuff here 
+}
