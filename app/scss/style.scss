@@ -16,8 +16,9 @@
   align-items: center;
   background-color: #202020;
   color: white;
-  border: 1px red solid;
-  width: 1100px;
+  border-bottom: 1px white solid;
+  width: 1300px;
+  height: 70px;
   padding: 10px;
 }
 
@@ -26,8 +27,7 @@
 }
 
 // buttons
-
-#submit {
+#add-btn {
   background-color: #0a95ff;
   color: white;
   border: 1px black solid;
@@ -37,17 +37,16 @@
   width: 100px;
 }
 
-#submit:hover {
+#add-btn:hover {
   border: 1px white solid;
 }
 
-#submit:active {
+#add-btn:active {
   background-color: #202020;
   color: white;
 }
 
 #reset {
-  outline: white;
   background-color: #0a95ff;
   color: white;
   border: 1px black solid;

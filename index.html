@@ -12,7 +12,8 @@
   <header id="header">
   </header>
   <div class="container">
-    <h1>My Library</h1>
+    <h1>Library</h1>
+    <p>Please Enter a New Book</p>
     <form id="pop-up-form">
       <label for="title">Book:</label>
       <input type="text" id="title" name="title" placeholder="Enter title">
@@ -20,9 +21,11 @@
       <input type="text" id="authorname" name="authorname" placeholder="Enter name">
       <label for="pages"># of Pages:</label>
       <input type="number" id="pages" name="pages" min="1" max="5000" placeholder="0">
-      <input type="submit" id="submit" value="Add">
+      <label for="read">Read it?</label>
+      <input type="checkbox" id="read" name="read">
       <input type="reset" id="reset">
     </form>
+    <button id="add-btn">Add</button>
   </div>
   <footer id="footer">
   </footer>

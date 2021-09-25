@@ -20,7 +20,13 @@ body {
 }
 
 h1 {
-  margin-bottom: 70px;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+p {
+  margin-bottom: 40px;
+  text-align: justify;
 }
 
 input {
@@ -29,6 +35,7 @@ input {
 }
 
 input:focus {
+  outline: none;
   border-color: #0a95ff;
 }
 
