@@ -33,8 +33,8 @@ readit.addEventListener('input', () => {
 
 
 addBtn.addEventListener('click', () => {
-  if (title === null || author === null || pages === null) {
-    alert('ERROR nothing inputed'); 
+  if (title === null || author === null || pages === null || read === null) {
+    alert('Incomplete Forms'); 
   } else {
     book = new Book(title, author, pages, read); 
     myLibrary.push(book); 
@@ -69,10 +69,11 @@ function createBook (item) {
   const deleteButton = document.createElement('button');
   const buttonDiv = document.createElement('div'); 
   // display object properties
-  deleteButton.innerHTML = 'Delete'; 
-  readButton.innerHTML = item.read + "";
-  titleP.textContent = 'Title:' + ' ' + item.title;
-  authorP.textContent = 'Author:' + ' ' + item.author;  
+  deleteButton.textContent = 'Delete'; 
+  deleteButton.style.backgroundColor = 'red'; 
+  readButton.textContent = item.read + "";
+  titleP.textContent = '' + item.title;
+  authorP.textContent = '' + item.author;  
   pageP.textContent = item.pages + ' ' + 'pages'; 
   // appending elements to book container
   bookContainer.appendChild(titleP);  
@@ -84,25 +85,31 @@ function createBook (item) {
   buttonDiv.appendChild(readButton);
   buttonDiv.appendChild(deleteButton);
   buttonDiv.classList.add('button-div');
+  // coloring read toggle button 
+  if (read === 'read') {
+    readButton.style.backgroundColor = 'green'; 
+  } else if (read === 'not read') {
+    readButton.style.backgroundColor = 'red'; 
+  }
   // button event listeners
   deleteButton.addEventListener('click', () => {
     document.getElementById(myLibrary.indexOf(item)).remove(); 
   });
-  let state = false; 
   readButton.addEventListener('click', () => {
-    if (state == false) {
+    console.log(read); 
+    if (read === 'not read') {
       readButton.style.backgroundColor = 'green'; 
       readButton.textContent = 'read';
-      state = true;  
-      return;
+      read = 'read'; 
     } 
 
-    if (state == true) {
+    if (read === 'read') {
       readButton.style.backgroundColor = 'red';
-      readButton.textContent = 'not read'
-      state = false
-      return
+      readButton.textContent = 'not read';
+      read = 'not read'; 
     }
+
+
   });
   bookContainer.setAttribute('id', myLibrary.indexOf(item));
 }

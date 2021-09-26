@@ -16,14 +16,17 @@
     <p>Please Enter a New Book</p>
     <div id="pop-up-form">
       <form>
-        <label for="title">Book:</label>
+        <label for="title">Book</label>
         <input type="text" id="title" name="title" placeholder="Enter title">
-        <label for="authorname">Author:</label>
+        <label for="authorname">Author</label>
         <input type="text" id="authorname" name="authorname" placeholder="Enter name">
-        <label for="pages"># of Pages:</label>
+        <label for="pages"># of Pages</label>
         <input type="number" id="pages" name="pages" min="1" max="5000" placeholder="0">
-        <label for="read">Read it?</label>
-        <input type="checkbox" id="read" name="read">
+        <label for="read">Status</label>
+        <select id="read" name="read">
+          <option value="read">Have Read</option>
+          <option value="not read">Have Not Read</option>
+        </select>
         <input type="reset" id="reset">
       </form>
       <div>

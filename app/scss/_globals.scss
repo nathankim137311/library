@@ -35,13 +35,15 @@ p {
 }
 
 input {
+  border: 2px solid transparent;
+  border-radius: 2px;
   height: 25px;
   margin-left: 20px;
 }
 
 input:focus {
   outline: none;
-  border-color: #0a95ff;
+  border: #0a95ff 2px solid;
 }
 
 label {
