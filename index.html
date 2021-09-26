@@ -14,18 +14,24 @@
   <div class="container">
     <h1>Library</h1>
     <p>Please Enter a New Book</p>
-    <form id="pop-up-form">
-      <label for="title">Book:</label>
-      <input type="text" id="title" name="title" placeholder="Enter title">
-      <label for="authorname">Author:</label>
-      <input type="text" id="authorname" name="authorname" placeholder="Enter name">
-      <label for="pages"># of Pages:</label>
-      <input type="number" id="pages" name="pages" min="1" max="5000" placeholder="0">
-      <label for="read">Read it?</label>
-      <input type="checkbox" id="read" name="read">
-      <input type="reset" id="reset">
-    </form>
-    <button id="add-btn">Add</button>
+    <div id="pop-up-form">
+      <form>
+        <label for="title">Book:</label>
+        <input type="text" id="title" name="title" placeholder="Enter title">
+        <label for="authorname">Author:</label>
+        <input type="text" id="authorname" name="authorname" placeholder="Enter name">
+        <label for="pages"># of Pages:</label>
+        <input type="number" id="pages" name="pages" min="1" max="5000" placeholder="0">
+        <label for="read">Read it?</label>
+        <input type="checkbox" id="read" name="read">
+        <input type="reset" id="reset">
+      </form>
+      <div>
+        <button id="add-btn">Add</button>
+      </div>
+    </div>
+  </div>
+  <div id="book-container">
   </div>
   <footer id="footer">
   </footer>

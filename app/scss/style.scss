@@ -17,9 +17,30 @@
   background-color: #202020;
   color: white;
   border-bottom: 1px white solid;
-  width: 1300px;
+  width: 1250px;
   height: 70px;
   padding: 10px;
+}
+
+.book-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  border: red 1px solid;
+  height: 70px;
+  margin: 0px 200px 0px 200px;
+  p {
+    font-size: 1rem;
+    margin: 0px;
+  }
+  button {
+    border: none;
+    border-radius: 3px;
+    width: 70px;
+    height: 30px;
+    margin: 0px 50px 0px 50px;
+  }
 }
 
 #pages {
@@ -32,7 +53,7 @@
   color: white;
   border: 1px black solid;
   border-radius: 3px;
-  margin-left: 40px;
+  margin-left: 20px;
   height: 30px;
   width: 100px;
 }

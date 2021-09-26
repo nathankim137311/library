@@ -4,6 +4,7 @@ let authorName = document.getElementById('authorname');
 let numPages = document.getElementById('pages');
 let readit = document.getElementById('read'); 
 let addBtn = document.getElementById('add-btn'); 
+const bookContainer = document.getElementById('book-container');
 let myLibrary = [];
 let title = null; 
 let author = null;
@@ -32,11 +33,13 @@ readit.addEventListener('input', () => {
 
 
 addBtn.addEventListener('click', () => {
-  book = new Book(title, author, pages, read); 
-  addBookToLibrary();
-  displayBook()
-  console.log(book.info()); 
-  console.log(myLibrary);
+  if (title === null || author === null || pages === null) {
+    alert('ERROR nothing inputed'); 
+  } else {
+    book = new Book(title, author, pages, read); 
+    myLibrary.push(book); 
+    displayBook()
+  }
 });
 
 // book constructor
@@ -50,7 +53,56 @@ function Book(title, author, pages, read) {
   }
 }
 
-function addBookToLibrary() {
-    myLibrary.push(book); 
+function displayBook () {
+  for (let i = 0; i < myLibrary.length; i++) {
+    createBook(myLibrary[i]);   
+  }
 }
 
+function createBook (item) {
+  // elements
+  const bookContainer = document.getElementById('book-container');
+  const titleP = document.createElement('p');
+  const authorP = document.createElement('p');  
+  const pageP = document.createElement('p'); 
+  const readButton = document.createElement('button');
+  const deleteButton = document.createElement('button');
+  const buttonDiv = document.createElement('div'); 
+  // display object properties
+  deleteButton.innerHTML = 'Delete'; 
+  readButton.innerHTML = item.read + "";
+  titleP.textContent = 'Title:' + ' ' + item.title;
+  authorP.textContent = 'Author:' + ' ' + item.author;  
+  pageP.textContent = item.pages + ' ' + 'pages'; 
+  // appending elements to book container
+  bookContainer.appendChild(titleP);  
+  bookContainer.appendChild(authorP); 
+  bookContainer.appendChild(pageP);
+  bookContainer.appendChild(buttonDiv); 
+  bookContainer.classList.add('book-container');
+  // button div 
+  buttonDiv.appendChild(readButton);
+  buttonDiv.appendChild(deleteButton);
+  buttonDiv.classList.add('button-div');
+  // button event listeners
+  deleteButton.addEventListener('click', () => {
+    document.getElementById(myLibrary.indexOf(item)).remove(); 
+  });
+  let state = false; 
+  readButton.addEventListener('click', () => {
+    if (state == false) {
+      readButton.style.backgroundColor = 'green'; 
+      readButton.textContent = 'read';
+      state = true;  
+      return;
+    } 
+
+    if (state == true) {
+      readButton.style.backgroundColor = 'red';
+      readButton.textContent = 'not read'
+      state = false
+      return
+    }
+  });
+  bookContainer.setAttribute('id', myLibrary.indexOf(item));
+}

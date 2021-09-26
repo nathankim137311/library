@@ -19,6 +19,11 @@ body {
   color: #ffffff;
 }
 
+form {
+  display: flex;
+  align-items: center;
+}
+
 h1 {
   font-size: 2.5rem;
   margin-bottom: 30px;
