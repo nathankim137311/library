@@ -1,9 +1,9 @@
 // variables
 const body = document.body;
-let bookTitle = document.getElementById('title'); 
-let authorName = document.getElementById('authorname');
-let numPages = document.getElementById('pages');
-let readit = document.getElementById('read'); 
+const bookTitle = document.getElementById('title'); 
+const authorName = document.getElementById('authorname');
+const numPages = document.getElementById('pages');
+const readit = document.getElementById('read'); 
 let addBtn = document.getElementById('add-btn'); 
 let inputArr = Array.from(document.querySelectorAll('input')); 
 let myLibrary = [];
@@ -30,12 +30,14 @@ readit.addEventListener('input', () => {
   read = readit.value;
 }); 
 
+let i = 0; 
+
 addBtn.addEventListener('click', () => {
     book = new Book(title, author, pages, read); 
     myLibrary.push(book); 
-    let i = 0; 
-    createBook(myLibrary[i]); 
-    i++; 
+    console.log(myLibrary); 
+    createBook(myLibrary[i]);
+    i++;  
 });
 
 // book constructor
@@ -87,7 +89,7 @@ function createBook (item) {
   if (item.read === 'read') {
     readButton.style.backgroundColor = 'green'; 
   } else if (item.read === 'not read') {
-    readButton.style.backgroundColor = 'red';
+    readButton.style.backgroundColor = '#b80202';
   } else {
     readButton.style.backgroundColor = 'white'; 
     readButton.style.color = 'black'; 
@@ -101,5 +103,5 @@ function createBook (item) {
    document.getElementById(myLibrary.indexOf(item)).remove(); // something wrong with delete button
    });  
    // clear input value
-     inputArr.value = ''; 
+   inputArr.value = ''; 
 }
