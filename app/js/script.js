@@ -1,10 +1,10 @@
 // variables
+const body = document.body;
 let bookTitle = document.getElementById('title'); 
 let authorName = document.getElementById('authorname');
 let numPages = document.getElementById('pages');
 let readit = document.getElementById('read'); 
 let addBtn = document.getElementById('add-btn'); 
-const bookContainer = document.getElementById('book-container');
 let myLibrary = [];
 let title = null; 
 let author = null;
@@ -12,9 +12,7 @@ let pages = null;
 let read = null;  
 let book = new Book(title, author, pages, read);
 
-// let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '296 pages', 'not read yet'); 
-
-// event listeners 
+// event listeners (change inputs so that it sends anything inside of the input textbox)
 bookTitle.addEventListener('input', () => {
   title = bookTitle.value;
 });
@@ -31,15 +29,10 @@ readit.addEventListener('input', () => {
   read = readit.value;
 }); 
 
-
 addBtn.addEventListener('click', () => {
-  if (title === null || author === null || pages === null || read === null) {
-    alert('Incomplete Forms'); 
-  } else {
     book = new Book(title, author, pages, read); 
     myLibrary.push(book); 
     displayBook()
-  }
 });
 
 // book constructor
@@ -53,63 +46,55 @@ function Book(title, author, pages, read) {
   }
 }
 
-function displayBook () {
+function displayBook () { // suspicious?
   for (let i = 0; i < myLibrary.length; i++) {
     createBook(myLibrary[i]);   
   }
 }
 
 function createBook (item) {
-  // elements
-  const bookContainer = document.getElementById('book-container');
+  console.log(item);
+  // container div
+  const containerDiv = document.createElement('div');
+  containerDiv.classList.add('book-container');  
+  body.appendChild(containerDiv); 
+  containerDiv.setAttribute('id', myLibrary.indexOf(item)); 
+  // create list
+  const ul = document.createElement('ul');
+  ul.classList.add('entry-list'); // might delete this
+  containerDiv.appendChild(ul); 
+  // list itenew book entry
+  const li = document.createElement('li');
+  const bookDiv = document.createElement('div'); 
+  bookDiv.classList.add('book-div');
+  li.appendChild(bookDiv);
+  ul.appendChild(li);
+  // book properties 
+  // title
   const titleP = document.createElement('p');
-  const authorP = document.createElement('p');  
-  const pageP = document.createElement('p'); 
+  titleP.textContent = ' ' + item.title; 
+  bookDiv.appendChild(titleP);
+  // author 
+  const authorP = document.createElement('p');
+  authorP.textContent = '' + item.author;    
+  bookDiv.appendChild(authorP); 
+  // page
+  const pageP = document.createElement('p');
+  pageP.textContent = item.pages + ' ' + 'pages';
+  bookDiv.appendChild(pageP);
+  // read button
   const readButton = document.createElement('button');
-  const deleteButton = document.createElement('button');
-  const buttonDiv = document.createElement('div'); 
-  // display object properties
-  deleteButton.textContent = 'Delete'; 
-  deleteButton.style.backgroundColor = 'red'; 
+  readButton.setAttribute('id', 'read-button');
   readButton.textContent = item.read + "";
-  titleP.textContent = '' + item.title;
-  authorP.textContent = '' + item.author;  
-  pageP.textContent = item.pages + ' ' + 'pages'; 
-  // appending elements to book container
-  bookContainer.appendChild(titleP);  
-  bookContainer.appendChild(authorP); 
-  bookContainer.appendChild(pageP);
-  bookContainer.appendChild(buttonDiv); 
-  bookContainer.classList.add('book-container');
-  // button div 
-  buttonDiv.appendChild(readButton);
-  buttonDiv.appendChild(deleteButton);
-  buttonDiv.classList.add('button-div');
-  // coloring read toggle button 
-  if (read === 'read') {
-    readButton.style.backgroundColor = 'green'; 
-  } else if (read === 'not read') {
-    readButton.style.backgroundColor = 'red'; 
-  }
-  // button event listeners
-  deleteButton.addEventListener('click', () => {
-    document.getElementById(myLibrary.indexOf(item)).remove(); 
-  });
-  readButton.addEventListener('click', () => {
-    console.log(read); 
-    if (read === 'not read') {
-      readButton.style.backgroundColor = 'green'; 
-      readButton.textContent = 'read';
-      read = 'read'; 
-    } 
-
-    if (read === 'read') {
-      readButton.style.backgroundColor = 'red';
-      readButton.textContent = 'not read';
-      read = 'not read'; 
-    }
-
-
-  });
-  bookContainer.setAttribute('id', myLibrary.indexOf(item));
+  bookDiv.appendChild(readButton);
+   // delete button
+   const deleteButton = document.createElement('button');
+   deleteButton.setAttribute('id', 'delete-button'); 
+   deleteButton.textContent = 'Delete'; 
+   bookDiv.appendChild(deleteButton);
+   deleteButton.addEventListener('click', () => {
+   document.getElementById(myLibrary.indexOf(item)).remove(); // something wrong with delete button
+   });  
+   // clear input value
+  //input.value = '';
 }

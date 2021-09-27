@@ -71,7 +71,7 @@ label {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 50vh;
+  height: 40vh;
 }
 
 #pop-up-form {
@@ -96,36 +96,6 @@ label {
   padding: 10px;
 }
 
-.book-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: 70px;
-  margin: 0px 200px 0px 200px;
-}
-
-.book-container p {
-  font-size: 1rem;
-  margin: 0px;
-}
-
-.book-container button {
-  border: none;
-  border-radius: 3px;
-  width: 70px;
-  height: 30px;
-  margin: 0px 50px 0px 50px;
-}
-
 #read {
   margin-left: 20px;
   border: none;
@@ -135,6 +105,82 @@ label {
 
 #pages {
   width: 60px;
+}
+
+.book-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.book-container ul {
+  display: inherit;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+  width: 60%;
+  list-style: none;
+}
+
+.book-container li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.book-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 1rem;
+}
+
+.book-div p {
+  margin: 0px;
+}
+
+#read-button {
+  border: none;
+  border-radius: 3px;
+  height: 30px;
+  width: 60px;
+}
+
+#delete-button {
+  border: none;
+  border-radius: 3px;
+  height: 30px;
+  width: 100px;
+  background-color: #b80202;
+  color: white;
+}
+
+#delete-button:hover {
+  border: 1px white solid;
+}
+
+#delete-button:active {
+  background-color: #202020;
+  color: white;
 }
 
 #add-btn {
