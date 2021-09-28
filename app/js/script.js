@@ -6,7 +6,13 @@ const numPages = document.getElementById('pages');
 const readit = document.getElementById('read'); 
 const addBtn = document.getElementById('add-btn'); 
 const inputs = document.querySelectorAll('input'); 
-const myLibrary = [];
+let myLibrary = [];
+
+// clear storage link
+const clearStorage = document.getElementById('clear-storage'); 
+clearStorage.addEventListener('click', () => {
+  localStorage.clear(); 
+});
 
 // list container 
 const containerDiv = document.createElement('div');
@@ -48,7 +54,6 @@ let i = 0;
 addBtn.addEventListener('click', () => {
     book = new Book(title, author, pages, read); 
     myLibrary.push(book); 
-    console.log(myLibrary); 
     createBook(myLibrary[i]);
     i++;  
 });
@@ -59,13 +64,9 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
-  this.info = function() {
-    return title + ' ' + 'by' + ' ' + author + ',' + ' ' + pages + ',' + ' ' + read; 
-  }
 }
 
 function createBook (item) {
-  console.log(item);
   // new book entry
   const li = document.createElement('li');
   const bookDiv = document.createElement('div'); 
@@ -114,14 +115,31 @@ function createBook (item) {
    deleteButton.textContent = 'Delete'; 
    bookDiv.appendChild(deleteButton);
    deleteButton.addEventListener('click', () => {
-    bookDiv.classList.add('vanish'); 
-    bookDiv.addEventListener('transitionend', () => {
-      li.remove(); 
-      document.getElementById(myLibrary.indexOf(item)).remove();
-    }); 
-   });  
+    bookDiv.classList.add('vanish');
+  });    
+  bookDiv.addEventListener('transitionend', () => {
+    li.remove(); 
+    //document.getElementById(myLibrary.indexOf(item)).remove();
+    localStorage.removeItem(item); 
+  }); 
+   // save to local storage 
+   localStorage.setItem('books', JSON.stringify(myLibrary));
    // clear input value
    const resetBtn = document.getElementById('reset'); 
    inputs.forEach(input => input.value = ''); 
    resetBtn.value = 'Reset'; 
 }
+
+// get books from local storage
+if (localStorage.getItem('books') === null) {
+  myLibrary = [];
+} else {
+  const booksFromStorage = JSON.parse(localStorage.getItem('books'));
+  myLibrary = booksFromStorage; 
+  let i = 0; 
+  while (i < myLibrary.length) {
+    createBook(myLibrary[i]);
+    i++;
+  }
+}
+

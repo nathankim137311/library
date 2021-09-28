@@ -10,20 +10,23 @@
 </head>
 <body>
   <header id="header">
-  </header>
+      <button id="clear-storage">clear local storage</button>
+    </header>
+    <div id="heading">
+      <h1>Library</h1>
+      <p>Utilizing JSON API</p>
+    </div>
   <div class="container">
-    <h1>Library</h1>
-    <p>Please Enter a New Book</p>
     <div id="pop-up-form">
       <form>
         <label for="title">Book</label>
-        <input type="text" id="title" name="title" placeholder="Enter title">
+        <input type="text" id="title" name="title" placeholder="Enter title" required>
         <label for="authorname">Author</label>
-        <input type="text" id="authorname" name="authorname" placeholder="Enter name">
+        <input type="text" id="authorname" name="authorname" placeholder="Enter name" required>
         <label for="pages"># of Pages</label>
-        <input type="number" id="pages" name="pages" min="1" max="5000" placeholder="0">
+        <input type="number" id="pages" name="pages" min="1" max="5000" placeholder="0" required>
         <label for="read">Status</label>
-        <select id="read" name="read">
+        <select id="read" name="read" required>
           <option value="read">Have Read</option>
           <option value="not read">Have Not Read</option>
         </select>

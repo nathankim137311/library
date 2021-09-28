@@ -30,16 +30,6 @@ form {
           align-items: center;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-}
-
-p {
-  margin-bottom: 40px;
-  text-align: justify;
-}
-
 input {
   border: 2px solid transparent;
   border-radius: 2px;
@@ -57,7 +47,31 @@ label {
   margin-left: 40px;
 }
 
-.container {
+#header {
+  position: fixed;
+  width: 100%;
+  background-color: black;
+  padding: 10px 20px 10px 20px;
+  top: 0px;
+  border-bottom: #0a95ff 1px solid;
+}
+
+#header #clear-storage {
+  width: 10%;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  background-color: black;
+  color: white;
+}
+
+#header #clear-storage:hover {
+  cursor: pointer;
+}
+
+#heading {
+  position: relative;
+  top: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,7 +85,35 @@ label {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 40vh;
+}
+
+#heading h1 {
+  font-size: 3rem;
+  margin: 10px;
+}
+
+#heading p {
+  font-size: 1rem;
+  margin: 0px;
+}
+
+.container {
+  position: relative;
+  top: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 15vh;
 }
 
 #pop-up-form {
@@ -142,6 +184,8 @@ label {
 }
 
 .book-div {
+  position: relative;
+  top: 225px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

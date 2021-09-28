@@ -1,11 +1,50 @@
 @import "globals";
 
-.container {
+#header {
+  position: fixed;
+  width: 100%;
+  background-color: black;
+  padding: 10px 20px 10px 20px;
+  top: 0px;
+  border-bottom: #0a95ff 1px solid;
+  #clear-storage {
+    width: 10%;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    background-color: black;
+    color: white;
+  }
+  #clear-storage:hover {
+    cursor: pointer;
+  }
+}
+
+#heading {
+  position: relative;
+  top: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 40vh;
+  h1 {
+    font-size: 3rem;
+    margin: 10px;
+  }
+  p {
+    font-size: 1rem;
+    margin: 0px;
+  }
+}
+
+.container {
+  position: relative;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
 }
 
 #pop-up-form {
@@ -53,6 +92,8 @@
 }
 
 .book-div {
+  position: relative;
+  top: 225px;
   display: flex;
   justify-content: space-between;
   align-items: center;
