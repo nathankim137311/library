@@ -5,7 +5,7 @@ const authorName = document.getElementById('authorname');
 const numPages = document.getElementById('pages');
 const readit = document.getElementById('read'); 
 const addBtn = document.getElementById('add-btn'); 
-const inputArr = Array.from(document.querySelectorAll('input')); 
+const inputs = document.querySelectorAll('input'); 
 const myLibrary = [];
 let title = null; 
 let author = null;
@@ -111,5 +111,7 @@ function createBook (item) {
    document.getElementById(myLibrary.indexOf(item)).remove();
    });  
    // clear input value
-   inputArr.value = ''; 
+   const resetBtn = document.getElementById('reset'); 
+   inputs.forEach(input => input.value = ''); 
+   resetBtn.value = 'Reset'; 
 }
