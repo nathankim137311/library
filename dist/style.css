@@ -49,6 +49,7 @@ label {
 
 #header {
   position: fixed;
+  z-index: 1000;
   width: 100%;
   background-color: black;
   padding: 10px 20px 10px 20px;
@@ -198,6 +199,8 @@ label {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  position: relative;
+  top: 225px;
   margin: 0px;
   padding: 0px;
   width: 60%;
@@ -212,8 +215,6 @@ label {
 }
 
 .book-div {
-  position: relative;
-  top: 225px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

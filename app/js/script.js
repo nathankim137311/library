@@ -103,23 +103,26 @@ function createBook (item) {
   readButton.addEventListener('click', () => {
     if (readButton.textContent === 'read') {
       readButton.style.backgroundColor = '#b80202';
-      readButton.textContent = 'not read'; 
+      readButton.textContent = 'not read';
+      item.read = 'not read';
+      localStorage.setItem('books', JSON.stringify(myLibrary));
     } else if (readButton.textContent === 'not read') {
       readButton.style.backgroundColor = 'green'; 
-      readButton.textContent = 'read'; 
+      readButton.textContent = 'read';
+      item.read = 'read';
+      localStorage.setItem('books', JSON.stringify(myLibrary));
     }
   });
-   // delete button
-   const deleteButton = document.createElement('button');
-   deleteButton.setAttribute('id', 'delete-button'); 
-   deleteButton.textContent = 'Delete'; 
-   bookDiv.appendChild(deleteButton);
-   deleteButton.addEventListener('click', () => {
-    bookDiv.classList.add('vanish');
+  // delete button
+  const deleteButton = document.createElement('button');
+  deleteButton.setAttribute('id', 'delete-button'); 
+  deleteButton.textContent = 'Delete'; 
+  bookDiv.appendChild(deleteButton);
+  deleteButton.addEventListener('click', () => {
+  bookDiv.classList.add('vanish');
   });    
   bookDiv.addEventListener('transitionend', () => {
     li.remove(); 
-    //document.getElementById(myLibrary.indexOf(item)).remove();
     localStorage.removeItem(item); 
   }); 
    // save to local storage 
@@ -142,4 +145,5 @@ if (localStorage.getItem('books') === null) {
     i++;
   }
 }
+
 
