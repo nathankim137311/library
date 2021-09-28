@@ -8,6 +8,13 @@ const addBtn = document.getElementById('add-btn');
 const inputs = document.querySelectorAll('input'); 
 let myLibrary = [];
 
+// input variables
+let title = null; 
+let author = null;
+let pages = null;
+let read = null;  
+let book = new Book(title, author, pages, read);
+
 // clear storage link
 const clearStorage = document.getElementById('clear-storage'); 
 clearStorage.addEventListener('click', () => {
@@ -24,13 +31,6 @@ const ul = document.createElement('ul');
 ul.setAttribute('id', 'book-list');
 containerDiv.appendChild(ul);  
 const bookList = document.getElementById('book-list'); 
-
-// input variables
-let title = null; 
-let author = null;
-let pages = null;
-let read = null;  
-let book = new Book(title, author, pages, read);
 
 // event listeners
 bookTitle.addEventListener('input', () => {

@@ -20,6 +20,27 @@
   }
 }
 
+#footer {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  padding-top: 10px;
+  bottom: 0px;
+  background-color: #202020;
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+  li a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
 #heading {
   position: relative;
   top: 200px;
