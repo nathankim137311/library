@@ -7,13 +7,26 @@ const readit = document.getElementById('read');
 const addBtn = document.getElementById('add-btn'); 
 const inputs = document.querySelectorAll('input'); 
 const myLibrary = [];
+
+// list container 
+const containerDiv = document.createElement('div');
+containerDiv.classList.add('book-container');  
+body.appendChild(containerDiv); 
+
+// create list
+const ul = document.createElement('ul');
+ul.setAttribute('id', 'book-list');
+containerDiv.appendChild(ul);  
+const bookList = document.getElementById('book-list'); 
+
+// input variables
 let title = null; 
 let author = null;
 let pages = null;
 let read = null;  
 let book = new Book(title, author, pages, read);
 
-// event listeners (change inputs so that it sends anything inside of the input textbox)
+// event listeners
 bookTitle.addEventListener('input', () => {
   title = bookTitle.value;
 });
@@ -53,20 +66,13 @@ function Book(title, author, pages, read) {
 
 function createBook (item) {
   console.log(item);
-  // container div
-  const containerDiv = document.createElement('div');
-  containerDiv.classList.add('book-container');  
-  body.appendChild(containerDiv); 
-  containerDiv.setAttribute('id', myLibrary.indexOf(item)); 
-  // create list
-  const ul = document.createElement('ul');
-  containerDiv.appendChild(ul); 
-  // list itenew book entry
+  // new book entry
   const li = document.createElement('li');
   const bookDiv = document.createElement('div'); 
+  bookDiv.setAttribute('id', myLibrary.indexOf(item)); 
   bookDiv.classList.add('book-div');
   li.appendChild(bookDiv);
-  ul.appendChild(li);
+  bookList.appendChild(li);
   // book properties 
   // title
   const titleP = document.createElement('p');
@@ -108,7 +114,11 @@ function createBook (item) {
    deleteButton.textContent = 'Delete'; 
    bookDiv.appendChild(deleteButton);
    deleteButton.addEventListener('click', () => {
-   document.getElementById(myLibrary.indexOf(item)).remove();
+    bookDiv.classList.add('vanish'); 
+    bookDiv.addEventListener('transitionend', () => {
+      li.remove(); 
+      document.getElementById(myLibrary.indexOf(item)).remove();
+    }); 
    });  
    // clear input value
    const resetBtn = document.getElementById('reset'); 

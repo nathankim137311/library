@@ -114,17 +114,20 @@ label {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .book-container ul {
   display: inherit;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   margin: 0px;
   padding: 0px;
   width: 60%;
@@ -132,6 +135,7 @@ label {
 }
 
 .book-container li {
+  margin: 1rem;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -151,7 +155,9 @@ label {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin: 1rem;
+  padding: 10px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .book-div p {
@@ -220,5 +226,11 @@ label {
 #reset:active {
   background-color: #202020;
   color: white;
+}
+
+.vanish {
+  -webkit-transform: translateY(8rem) rotateZ(10deg);
+          transform: translateY(8rem) rotateZ(10deg);
+  opacity: 0;
 }
 /*# sourceMappingURL=style.css.map */

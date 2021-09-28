@@ -36,16 +36,18 @@
 .book-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  height: fit-content;
   ul {
     display: inherit;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: flex-start;
     margin: 0px;
     padding: 0px;
     width: 60%;
     list-style: none;
   }
   li {
+    margin: 1rem;
     flex: 1;
   }
 }
@@ -55,7 +57,8 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  margin: 1rem;
+  padding: 10px;
+  transition: all 0.5s ease;
   p {
     margin: 0px;
   }
@@ -124,4 +127,9 @@
 #reset:active {
   background-color: #202020;
   color: white;
+}
+
+.vanish {
+  transform: translateY(8rem) rotateZ(10deg);
+  opacity: 0;
 }
