@@ -4,9 +4,9 @@ const bookTitle = document.getElementById('title');
 const authorName = document.getElementById('authorname');
 const numPages = document.getElementById('pages');
 const readit = document.getElementById('read'); 
-let addBtn = document.getElementById('add-btn'); 
-let inputArr = Array.from(document.querySelectorAll('input')); 
-let myLibrary = [];
+const addBtn = document.getElementById('add-btn'); 
+const inputArr = Array.from(document.querySelectorAll('input')); 
+const myLibrary = [];
 let title = null; 
 let author = null;
 let pages = null;
@@ -60,7 +60,6 @@ function createBook (item) {
   containerDiv.setAttribute('id', myLibrary.indexOf(item)); 
   // create list
   const ul = document.createElement('ul');
-  ul.classList.add('entry-list'); // might delete this
   containerDiv.appendChild(ul); 
   // list itenew book entry
   const li = document.createElement('li');
@@ -94,13 +93,22 @@ function createBook (item) {
     readButton.style.backgroundColor = 'white'; 
     readButton.style.color = 'black'; 
   }
+  readButton.addEventListener('click', () => {
+    if (readButton.textContent === 'read') {
+      readButton.style.backgroundColor = '#b80202';
+      readButton.textContent = 'not read'; 
+    } else if (readButton.textContent === 'not read') {
+      readButton.style.backgroundColor = 'green'; 
+      readButton.textContent = 'read'; 
+    }
+  });
    // delete button
    const deleteButton = document.createElement('button');
    deleteButton.setAttribute('id', 'delete-button'); 
    deleteButton.textContent = 'Delete'; 
    bookDiv.appendChild(deleteButton);
    deleteButton.addEventListener('click', () => {
-   document.getElementById(myLibrary.indexOf(item)).remove(); // something wrong with delete button
+   document.getElementById(myLibrary.indexOf(item)).remove();
    });  
    // clear input value
    inputArr.value = ''; 
