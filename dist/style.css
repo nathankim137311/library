@@ -47,6 +47,10 @@ label {
   margin-left: 40px;
 }
 
+button:focus {
+  outline: white;
+}
+
 #header {
   position: fixed;
   z-index: 1000;
@@ -169,9 +173,14 @@ label {
 
 #read {
   margin-left: 20px;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 2px;
   height: 25px;
+}
+
+#read:focus {
+  outline: none;
+  border: #0a95ff 2px solid;
 }
 
 #pages {
@@ -200,7 +209,7 @@ label {
   top: 225px;
   margin: 0px;
   padding: 0px;
-  width: 60%;
+  width: 65%;
   list-style: none;
 }
 
@@ -215,10 +224,13 @@ label {
   width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (100px)[5];
-      grid-template-columns: repeat(5, 100px);
+  -ms-grid-columns: (200px)[2] 100px 100px 100px;
+      grid-template-columns: repeat(2, 200px) 100px 100px 100px;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;

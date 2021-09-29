@@ -20,21 +20,19 @@
     <div id="pop-up-form">
       <form>
         <label for="title">Book</label>
-        <input type="text" id="title" name="title" placeholder="Enter title" required>
+        <input type="text" id="title" name="title" placeholder="Enter title" required/>
         <label for="authorname">Author</label>
-        <input type="text" id="authorname" name="authorname" placeholder="Enter name" required>
+        <input type="text" id="authorname" name="authorname" placeholder="Enter name" required/>
         <label for="pages"># of Pages</label>
-        <input type="number" id="pages" name="pages" min="1" max="5000" placeholder="0" required>
+        <input type="number" id="pages" name="pages" min="1" max="5000" placeholder="0" required/>
         <label for="read">Status</label>
-        <select id="read" name="read" required>
-          <option value="read">Have Read</option>
+        <select id="read" name="read">
+          <option value="read" selected>Have Read</option>
           <option value="not read">Have Not Read</option>
         </select>
         <input type="reset" id="reset">
+        <button type="submit" id="add-btn">Add</button>
       </form>
-      <div>
-        <button id="add-btn">Add</button>
-      </div>
     </div>
   </div>
   <footer id="footer">

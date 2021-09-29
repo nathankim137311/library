@@ -40,3 +40,7 @@ label {
   font-size: 1rem;
   margin-left: 40px;
 }
+
+button:focus {
+  outline: white;
+}

@@ -9,10 +9,10 @@ const inputs = document.querySelectorAll('input');
 let myLibrary = [];
 
 // input variables
-let title = null; 
-let author = null;
-let pages = null;
-let read = 'not read';  
+let title = ''; 
+let author = '';
+let pages = '';
+let read = 'read';  
 let book = new Book(title, author, pages, read);
 
 // clear storage link
@@ -51,13 +51,17 @@ readit.addEventListener('input', () => {
 
 let i = 0; 
 
-addBtn.addEventListener('click', () => {
-  book = new Book(title, author, pages, read); 
-  myLibrary.push(book); 
-  createBook(myLibrary[i]);
-  i++;  
-  console.log(myLibrary);
-  console.log(i);
+addBtn.addEventListener('click', (e) => {
+  if (title === '' && author === '' && pages === '') {
+    e.preventDefault(); 
+    alert('Please fill out all input fields!'); 
+  } else {
+    e.preventDefault(); 
+    book = new Book(title, author, pages, read); 
+    myLibrary.push(book); 
+    createBook(myLibrary[i]);
+    i++;  
+  }
 });
 
 // get books from local storage
@@ -135,8 +139,12 @@ function createBook (item) {
   deleteButton.textContent = 'Delete'; 
   bookDiv.appendChild(deleteButton);
   deleteButton.addEventListener('click', (e) => {
-  bookDiv.classList.add('vanish');
-  let index = e.target.id;
+    title = '';
+    author = '';
+    pages = '';
+    read = 'read'; 
+    bookDiv.classList.add('vanish');
+    let index = e.target.id;
     myLibrary.splice(index, 1);
     saveLocal(); 
     i--; 
