@@ -101,7 +101,6 @@
   ul {
     display: inherit;
     flex-direction: column;
-    justify-content: flex-start;
     position: relative;
     top: 225px;
     margin: 0px;
@@ -118,9 +117,8 @@
 .book-div {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-content: space-between;
-  align-items: center;
+  grid-template-columns: repeat(5, 100px);
+  justify-content: space-around;
   flex-direction: row;
   padding: 10px;
   transition: all 0.5s ease;

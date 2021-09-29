@@ -52,12 +52,27 @@ readit.addEventListener('input', () => {
 let i = 0; 
 
 addBtn.addEventListener('click', () => {
-    book = new Book(title, author, pages, read); 
-    myLibrary.push(book); 
-    createBook(myLibrary[i]);
-    i++;  
-    console.log(myLibrary);
+  book = new Book(title, author, pages, read); 
+  myLibrary.push(book); 
+  createBook(myLibrary[i]);
+  i++;  
+  console.log(myLibrary);
+  console.log(i);
 });
+
+// get books from local storage
+if (localStorage.getItem('books') === null) {
+  myLibrary = [];
+} else {
+  const booksFromStorage = JSON.parse(localStorage.getItem('books'));
+  myLibrary = booksFromStorage; 
+  let book = 0; 
+  i = myLibrary.length; 
+  while (book < myLibrary.length) {
+    createBook(myLibrary[book]);
+    book++;
+  }
+}
 
 // book constructor
 function Book(title, author, pages, read) {
@@ -101,7 +116,7 @@ function createBook (item) {
     readButton.style.backgroundColor = 'white'; 
     readButton.style.color = 'black'; 
   }
-  readButton.addEventListener('click', () => {
+  readButton.addEventListener('click', (e) => {
     if (readButton.textContent === 'read') {
       readButton.style.backgroundColor = '#b80202';
       readButton.textContent = 'not read';
@@ -123,8 +138,8 @@ function createBook (item) {
   bookDiv.classList.add('vanish');
   let index = e.target.id;
     myLibrary.splice(index, 1);
-    console.log(myLibrary);
     saveLocal(); 
+    i--; 
   });    
   bookDiv.addEventListener('transitionend', (e) => {
     li.remove(); 
@@ -133,23 +148,11 @@ function createBook (item) {
   const resetBtn = document.getElementById('reset'); 
   inputs.forEach(input => input.value = ''); 
   resetBtn.value = 'Reset'; 
-  // save to local storage 
-  function saveLocal () {
-    localStorage.setItem('books', JSON.stringify(myLibrary));
-  }
 }
 
-// get books from local storage
-if (localStorage.getItem('books') === null) {
-  myLibrary = [];
-} else {
-  const booksFromStorage = JSON.parse(localStorage.getItem('books'));
-  myLibrary = booksFromStorage; 
-  let i = 0; 
-  while (i < myLibrary.length) {
-    createBook(myLibrary[i]);
-    i++;
-  }
+// save to local storage 
+function saveLocal () {
+  localStorage.setItem('books', JSON.stringify(myLibrary));
 }
 
 
