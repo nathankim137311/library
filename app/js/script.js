@@ -12,7 +12,7 @@ let myLibrary = [];
 let title = null; 
 let author = null;
 let pages = null;
-let read = null;  
+let read = 'not read';  
 let book = new Book(title, author, pages, read);
 
 // clear storage link
@@ -56,6 +56,7 @@ addBtn.addEventListener('click', () => {
     myLibrary.push(book); 
     createBook(myLibrary[i]);
     i++;  
+    console.log(myLibrary);
 });
 
 // book constructor
@@ -67,6 +68,7 @@ function Book(title, author, pages, read) {
 }
 
 function createBook (item) {
+  saveLocal(); 
   // new book entry
   const li = document.createElement('li');
   const bookDiv = document.createElement('div'); 
@@ -74,7 +76,6 @@ function createBook (item) {
   bookDiv.classList.add('book-div');
   li.appendChild(bookDiv);
   bookList.appendChild(li);
-  // book properties 
   // title
   const titleP = document.createElement('p');
   titleP.textContent = ' ' + item.title; 
@@ -105,12 +106,12 @@ function createBook (item) {
       readButton.style.backgroundColor = '#b80202';
       readButton.textContent = 'not read';
       item.read = 'not read';
-      localStorage.setItem('books', JSON.stringify(myLibrary));
+      saveLocal(); 
     } else if (readButton.textContent === 'not read') {
       readButton.style.backgroundColor = 'green'; 
       readButton.textContent = 'read';
       item.read = 'read';
-      localStorage.setItem('books', JSON.stringify(myLibrary));
+      saveLocal(); 
     }
   });
   // delete button
@@ -118,19 +119,24 @@ function createBook (item) {
   deleteButton.setAttribute('id', 'delete-button'); 
   deleteButton.textContent = 'Delete'; 
   bookDiv.appendChild(deleteButton);
-  deleteButton.addEventListener('click', () => {
+  deleteButton.addEventListener('click', (e) => {
   bookDiv.classList.add('vanish');
+  let index = e.target.id;
+    myLibrary.splice(index, 1);
+    console.log(myLibrary);
+    saveLocal(); 
   });    
-  bookDiv.addEventListener('transitionend', () => {
+  bookDiv.addEventListener('transitionend', (e) => {
     li.remove(); 
-    localStorage.removeItem(item); 
   }); 
-   // save to local storage 
-   localStorage.setItem('books', JSON.stringify(myLibrary));
-   // clear input value
-   const resetBtn = document.getElementById('reset'); 
-   inputs.forEach(input => input.value = ''); 
-   resetBtn.value = 'Reset'; 
+  // clear input value
+  const resetBtn = document.getElementById('reset'); 
+  inputs.forEach(input => input.value = ''); 
+  resetBtn.value = 'Reset'; 
+  // save to local storage 
+  function saveLocal () {
+    localStorage.setItem('books', JSON.stringify(myLibrary));
+  }
 }
 
 // get books from local storage

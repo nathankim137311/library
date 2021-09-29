@@ -116,7 +116,9 @@
 }
 
 .book-div {
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
