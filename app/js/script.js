@@ -1,3 +1,4 @@
+/*
 // variables
 const body = document.body;
 const bookTitle = document.getElementById('title'); 
@@ -32,6 +33,9 @@ ul.setAttribute('id', 'book-list');
 containerDiv.appendChild(ul);  
 const bookList = document.getElementById('book-list'); 
 
+// increment 
+let i = 0; 
+
 // event listeners
 bookTitle.addEventListener('input', () => {
   title = bookTitle.value;
@@ -48,8 +52,6 @@ numPages.addEventListener('input', () => {
 readit.addEventListener('input', () => {
   read = readit.value;
 }); 
-
-let i = 0; 
 
 addBtn.addEventListener('click', (e) => {
   if (title === '' && author === '' && pages === '') {
@@ -162,5 +164,5 @@ function createBook (item) {
 function saveLocal () {
   localStorage.setItem('books', JSON.stringify(myLibrary));
 }
-
+*/
 
