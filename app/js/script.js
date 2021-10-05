@@ -1,21 +1,36 @@
-/*
 // variables
 const body = document.body;
-const bookTitle = document.getElementById('title'); 
-const authorName = document.getElementById('authorname');
-const numPages = document.getElementById('pages');
-const readit = document.getElementById('read'); 
+// input variables
+const title = document.getElementById('title'); 
+const author = document.getElementById('author');
+const pages = document.getElementById('pages');
+const status = document.getElementById('status'); 
 const addBtn = document.getElementById('add-btn'); 
 const inputs = document.querySelectorAll('input'); 
 let myLibrary = [];
 
-// input variables
-let title = ''; 
-let author = '';
-let pages = '';
-let read = 'read';  
-let book = new Book(title, author, pages, read);
+class Book {
+  constructor() {
+     this.title  = title; 
+     this.author = author;
+     this.pages = pages;
+     this.status = status;
+  }
+  get info() {
+    let bookInfo = [this.title, this.author, this.pages, this.status]; 
+    return bookInfo; 
+  }
+} 
 
+// listens for keyboard inputs and stores text data in variables
+
+addBtn.addEventListener('click', (e) => {
+  e.preventDefault(); 
+  let book = new Book();
+  console.log(book);
+});
+
+/*
 // clear storage link
 const clearStorage = document.getElementById('clear-storage'); 
 clearStorage.addEventListener('click', () => {

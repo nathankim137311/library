@@ -15,18 +15,24 @@ const person = {
 };
 */
 
-
-class Book {
-    constructor() {
-        this.title  = prompt('title?', 'enter book title');
-        this.author = prompt('author?', 'enter a name');
-        this.pages = prompt('how many pages?', 'enter a number');
-        this.read = prompt('have you read this book?').toLowerCase();
-    }
-}
-
-let book = new Book (); 
-console.log(book);
+// addBtn.addEventListener('click', (e) => {
+//   let book = new Book();
+//   e.preventDefault();
+// });
+// 
+// 
+// addBtn.addEventListener('click', (e) => {
+//   if (title === '' && author === '' && pages === '') {
+//     e.preventDefault(); 
+//     alert('Please fill out all input fields!'); 
+//   } else {
+//     e.preventDefault(); 
+//     book = new Book(title, author, pages, read); 
+//     myLibrary.push(book); 
+//     createBook(myLibrary[i]);
+//     i++;  
+//   }
+// });
 
 
 /*
