@@ -1,34 +1,50 @@
 // variables
 const body = document.body;
 // input variables
-const title = document.getElementById('title'); 
-const author = document.getElementById('author');
-const pages = document.getElementById('pages');
-const status = document.getElementById('status'); 
+const titleInput = document.getElementById('title'); 
+const authorInput = document.getElementById('author');
+const pagesInput = document.getElementById('pages');
+const statusInput = document.getElementById('status'); 
 const addBtn = document.getElementById('add-btn'); 
-const inputs = document.querySelectorAll('input'); 
+// arrays 
+const inputs = Array.from(document.querySelectorAll('input')); 
 let myLibrary = [];
 
+// creates multiple book objects 
 class Book {
   constructor() {
-     this.title  = title; 
-     this.author = author;
-     this.pages = pages;
-     this.status = status;
+    this.title = titleInput.value;
+    this.author = authorInput.value;
+    this.pages = pagesInput.value;
+    this.status = statusInput.value;
   }
-  get info() {
-    let bookInfo = [this.title, this.author, this.pages, this.status]; 
-    return bookInfo; 
+  // prototype
+  getInfo() {
+    return `${this.title}(${this.pages}) was written by ${this.author}`
   }
 } 
 
-// listens for keyboard inputs and stores text data in variables
+// clears input fields 
+function clearInputs() {
+  for(let i = 0; i < inputs.length; i++) {
+    inputs[i].value = ''; 
+  }
+}
+
+
+
 
 addBtn.addEventListener('click', (e) => {
   e.preventDefault(); 
-  let book = new Book();
-  console.log(book);
+  const book = new Book(); 
+  myLibrary.push(book); 
+  console.log(myLibrary); 
+  console.log(book); 
+  clearInputs(); 
 });
+
+
+// listens for keyboard inputs and stores text data in variables
 
 /*
 // clear storage link
