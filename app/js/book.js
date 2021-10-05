@@ -1,29 +1,32 @@
 // book class  
 
+/*
+const person = {
+  firstName: 'Nathan',
+  lastName: 'Kim', 
+  get fullName() {
+    return `${person.firstName} ${person.lastName}`
+  },
+  set fullName(value) {
+    const parts = value.split(' ');
+    this.firstName = parts[0];
+    this.lastName = parts[1];
+  } 
+};
+*/
+
+
 class Book {
-    // properties 
-    title = ''; 
-    author = '';
-    pages = '';
-    read = 'read';  
-    // constructor 
-    constructor(title, author, pages) {
-        this.title = title
-        this.author = author
-        this.pages = pages
-        this.read = function() {
-            return 'I have not read' + ' ' + this.title;  
-        }
+    constructor() {
+        this.title  = prompt('title?', 'enter book title');
+        this.author = prompt('author?', 'enter a name');
+        this.pages = prompt('how many pages?', 'enter a number');
+        this.read = prompt('have you read this book?').toLowerCase();
     }
-    //set title() {
-    //      
-    //}
 }
 
-let book = new Book('Sorceror\'s stone', 'J.K. Rowling', '9000', "have not read"); 
-console.log(book); 
-
-
+let book = new Book (); 
+console.log(book);
 
 
 /*
