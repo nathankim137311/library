@@ -32,14 +32,6 @@ class Book {
     this.pages = pagesInput.value;
     this.status = statusInput.value;
   }
-  // prototype
-  readStatus () {
-    if (this.status === 'read') {
-      return true; 
-    } else if (this.status === 'not read') {
-      return false; 
-    }
-  } 
 } 
 
 // clears input fields 
@@ -51,10 +43,15 @@ function clearInputs() {
 }
 
 // prevents form from submitting, calls functions
-addBtn.addEventListener('click', (e) => {
-  e.preventDefault(); 
-  getBooks();
-  clearInputs(); 
+addBtn.addEventListener('click', () => {
+  let i = 0;
+    if (inputs[i].value === '' || inputs[i].value === null) {
+      alert('please fill out all fields');
+      i++; 
+    } else {
+      getBooks();
+      clearInputs(); 
+  }
 });
 
 // creates new book object and stores it in myLibrary
@@ -151,6 +148,7 @@ if (localStorage.getItem('books') === null) {
 // clears local storage
 clearStorageBtn.addEventListener('click', () => {
   localStorage.clear(); 
+  location.reload(); 
 });
 
 
