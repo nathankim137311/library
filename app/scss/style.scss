@@ -99,7 +99,10 @@
 }
 
 #status {
+  border: 2px solid transparent;
   margin-left: 20px;
+  border-radius: 3px;
+  height: 25px;
 }
 
 // book entries
