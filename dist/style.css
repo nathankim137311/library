@@ -187,6 +187,10 @@ button:focus {
   width: 60px;
 }
 
+#status {
+  margin-left: 20px;
+}
+
 .book-container {
   display: -webkit-box;
   display: -ms-flexbox;

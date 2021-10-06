@@ -91,9 +91,9 @@ function createBook (book) {
   readButton.setAttribute('id', 'read-button');
   readButton.textContent = book.status + "";
   bookDiv.appendChild(readButton);
-  if (book.readStatus() === true) {
+  if (book.status === 'read') {
     readButton.style.backgroundColor = 'green'; 
-  } else if (book.readStatus() === false) {
+  } else if (book.status === 'not read') {
     readButton.style.backgroundColor = '#b80202';
   } else {
     readButton.style.backgroundColor = 'white'; 
@@ -117,26 +117,17 @@ function createBook (book) {
   deleteButton.setAttribute('id', 'delete-button'); 
   deleteButton.textContent = 'Delete'; 
   bookDiv.appendChild(deleteButton);
-  deleteButton.addEventListener('click', (e) => { // fix
-    title = '';
-    author = '';
-    pages = '';
-    read = 'read'; 
-    bookDiv.classList.add('vanish');
-    let index = e.target.id;
-    myLibrary.splice(index, 1);
-    saveLocal(); 
-    i--; 
+  deleteButton.addEventListener('click', (e) => {
+      bookDiv.classList.add('vanish');
+      let id = e.target.id;
+      myLibrary.splice(id, 1);
+      saveLocal(); 
+      index--; 
   });    
   bookDiv.addEventListener('transitionend', (e) => {
     li.remove(); 
   }); 
-  // clear input value
-  const resetBtn = document.getElementById('reset'); 
-  inputs.forEach(input => input.value = ''); 
-  resetBtn.value = 'Reset'; 
 }
-
 
 // save to local storage 
 function saveLocal () {
@@ -149,11 +140,11 @@ if (localStorage.getItem('books') === null) {
 } else {
   const booksFromStorage = JSON.parse(localStorage.getItem('books'));
   myLibrary = booksFromStorage; 
-  let index = 0; 
-  i = myLibrary.length; 
-  while (index < myLibrary.length) {
-    createBook(myLibrary[index]);
-    index++;
+  let books = 0; 
+  index = myLibrary.length; 
+  while (books < myLibrary.length) {
+    createBook(myLibrary[books]);
+    books++;
   }
 }
 
